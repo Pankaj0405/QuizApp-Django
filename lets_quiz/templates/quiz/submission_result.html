@@ -1,0 +1,346 @@
+
+<html>
+<head>
+<style>
+ body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: rgb(32, 29, 89);
+  overflow: hidden;
+}
+
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+main {
+background-color: purple;
+    border-radius: 10px;
+    padding: 5px 20px 50px;
+    width: 95%;
+    max-width: 600px;
+    margin: 0 auto 214px;
+    transform: translateY(100%);
+}
+
+.text-container {
+    text-align: center;
+}
+
+.quiz-options {
+    margin: 60px 0;
+}
+
+[type=radio] {
+    border: 0;
+    height: 0.0625rem;
+    width: 0.0625rem;
+    position: absolute;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background: rgb(253, 253, 253);
+    margin-bottom: 15px;
+    padding: 6px 0;
+    position: relative;
+    width: 100%;
+    color: #000;
+}
+
+label:hover .alphabet {
+    background: #000;
+    color: #fff;
+}
+
+label .alphabet {
+    border-radius: 5px;
+    border: solid 1px #000;
+    padding: .4rem .5rem .4rem;
+    width: 2.3rem;
+    margin: 0 1.3rem 0 .7rem;
+    display: flex;
+    justify-content: center;
+    color: #000;
+}
+
+label .icon {
+    height: auto;
+    position: absolute;
+    left: 92%;
+    top: 12px;
+}
+
+
+#btn {
+    border: 1px solid #000;
+    border-radius: 50px;
+    background: rgb(247, 206, 206);
+    color: #000;
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 57%;
+    margin: 0 auto;
+    outline: none;
+    padding: 11px 0;
+    text-align: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#btn:hover {
+    background: rgba(255, 255, 255, 0.671);
+    color: rgba(0, 0, 0, 0.749);
+    border: 1px solid #000;
+}
+
+form:invalid #btn {
+    pointer-events: none;
+    background: rgba(248, 214, 214, 0.767);
+}
+
+.btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+
+
+
+h1::before {
+    content: attr(data-heading);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0) 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    mix-blend-mode: screen;
+    animation: shine 1s infinite;
+    background-size: 200%;
+    text-shadow: 2px 2px 10px rgba(#000, 0.2), -2px 2px 10px rgba(#000, 0.2), -2px -2px 10px rgba(#000, 0.2);
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    49% {
+        opacity: 9;
+    }
+
+    50% {
+        opacity: .8;
+    }
+
+    99% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: .3;
+    }
+}
+
+@keyframes shine {
+    0% {
+        background-position: -100%;
+    }
+
+    100% {
+        background-position: 100%;
+    }
+}
+
+.over-text-cont {
+    text-align: center;
+}
+
+.over-text-cont h2 {
+    font-family: 'Sirin Stencil', cursive;
+}
+
+.over-text-cont h2::after {
+    content: counter(points) "0/50";
+    margin-left: 15px;
+}
+
+#refresh {
+    color: #fff;
+    position: relative;
+    height: 100vh;
+}
+
+.refresh-content {
+    display: grid;
+    font-size: 1.2rem;
+    place-items: center;
+    width: 70%;
+    line-height: 2;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.refresh-content svg {
+    width: 50px;
+    height: auto;
+    animation: pulse 1s infinite;
+}
+
+.center-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  font-size: 12.5em;
+}
+/* MEDIA QUERY */
+
+@media (max-width: 420px) {
+    body {
+        font-size: .8rem;
+    }
+
+    main {
+        width: 92%;
+    }
+
+    section {
+        background: linear-gradient(to right, #3f2b96, #1f0961);
+    }
+
+    label {
+        font-size: .71rem;
+    }
+
+    label .alphabet {
+        margin: 0 .9rem 0 .7rem;
+    }
+
+    .jshdgdgwgdwfdfwdwjfdjwwdwdco:checked+label {
+        -webkit-text-stroke: .1px #fff;
+    }
+
+    label .jdsjkefkefkefefexco {
+        width: 16px;
+    }
+
+    label .jfdedgwfzexf4hjin {
+        width: 14px;
+    }
+
+    #game-over h1 {
+        font-size: 3rem;
+    }
+
+    .score-counter {
+        width: 120px;
+        height: 5%;
+        font-size: .7rem;
+    }
+
+    .score-text {
+        margin: 0 20px 0 0;
+    }
+
+    .over-text-cont h2 {
+        margin-bottom: 40px;
+    }
+
+    .over-text-cont #btn {
+        padding: 3px 0;
+    }
+
+    .refresh-content {
+        width: 90%;
+    }
+
+    .refresh-content {
+        display: grid;
+        font-size: .8rem;
+    }
+}
+
+@media (max-width: 325px) {
+
+    label {
+        font-size: .63rem;
+    }
+
+    label .alphabet {
+        margin: 0 .55rem 0 .7rem;
+    }
+
+    label .jdsjkefkefkefefexco {
+        width: 14px;
+    }
+
+    label .jfdedgwfzexf4hjin {
+        width: 12px;
+    }
+
+}
+</style>
+
+    </head>
+    <body>
+
+<!--	   	<h3 class="text-info">{{ attempted_question.question.html|safe }}</h3>-->
+
+<!--		<p>-->
+<!--		    <strong>Your answer: </strong>-->
+<!--		    {{ attempted_question.selected_choice.html|safe }}-->
+<!--		</p>-->
+
+<!--		{% if attempted_question.selected_choice.is_correct %}-->
+<!--		<h4 class="text-success">Yayy!! Your answer is correct. High Five! 🙌</h4>-->
+<!--		{% else %}-->
+<!--		<h4 class="text-danger">Your answer is incorrect 😟</h4>-->
+<!--		{% endif %}-->
+
+<!--		<a class="btn btn-info" href="{% url 'quiz:play' %}">Show next question</a>-->
+
+
+  <div id="myTimer" class="center-screen" style="color: white;
+"></div>
+<!--  <button type="button" id="myBtn" class="btnDisable" disabled onclick="window.open('https://www.niljadav.com/')">Please wait...</button>-->
+
+
+<script>
+    var sec = 2;
+    var myTimer = document.getElementById('myTimer');
+    var myBtn = document.getElementById('myBtn');
+    window.onload = countDown;
+
+    function countDown()
+    {
+        if (sec < 10) {
+            myTimer.innerHTML = "0" + sec;
+        } else {
+            myTimer.innerHTML = sec;
+        }
+        if (sec <= 0) {
+<!--            $("#myBtn").removeAttr("disabled");-->
+<!--            $("#myBtn").removeClass().addClass("btnEnable");-->
+<!--            $("#myTimer").fadeTo(2500, 0);-->
+<!--            myBtn.innerHTML = "Click Me!";-->
+window.location.href="{% url 'quiz:play' %}";
+            return;
+        }
+        sec -= 1;
+        window.setTimeout(countDown, 1000);
+    }
+    </script>
+    </body>
+</html>

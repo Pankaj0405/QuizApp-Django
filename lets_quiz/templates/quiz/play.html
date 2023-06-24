@@ -1,0 +1,426 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <style>
+ body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: rgb(32, 29, 89);
+  overflow: hidden;
+}
+
+section{
+  position: relative;
+  width: 100vw;
+  height:8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(45deg, #ff0081, #8629f0);
+  border-bottom-left-radius: 2vh;
+  border-bottom-right-radius: 2vh;
+  box-shadow: 0 1.1vh 1.1vh rgba(0, 0, 0, 0.3)
+}
+
+section .top-bar{
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  max-width: 100vw;
+  text-align: center;
+}
+
+section .question-number{
+  color: white;
+  font-size: 3.5vh;
+  font-weight: 400;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+section::before{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.container{
+  margin: 0;
+  height: 68vh;
+  background:#5c17aa;
+  width:90vw;
+  justify-content: center;
+  align-items: center;
+  margin: 9vh 5.5vw;
+  overflow: hidden;
+  border-radius: 2vh;
+}
+
+.timer{
+  position: absolute;
+  height: 10vh;
+  width: 10vh;
+  border: 2vh solid #5c17aa;
+  background: rgb(26, 21, 68);
+  margin: 2wh;
+  bottom:0;
+  top: 10vh;
+  left: 35vw;
+  right: 5vh;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+.timer span{
+  position: relative;
+  font-size: 4.7vh;
+  top: 2.5vh;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.time-left{
+  color: white;
+  font-size: 3vh;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.ques-text{
+  height: 12vh;
+  width:87vw;
+  justify-content: center;
+  color:#5c17aa;
+  position:relative;
+  top: 12vh;
+  left:50%;
+  transform:translate(-50%,-50%);
+  display:flex;
+  overflow: hidden;
+  text-align: center;
+  align-items:center;
+}
+
+.ques-text > span{
+  font-size: 3.1vh;
+  font-weight: 250;
+  color: white;
+  margin: 0 1vw;
+  font-weight: bold;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+.option-div{
+  height:90vh;
+  width:100%;
+  position:relative;
+  top: 3.7vh;
+}
+
+[type=radio] {
+    border: 0;
+    height: 0.0625rem;
+    width: 0.0625rem;
+    position: absolute;
+}
+
+.option-div> .option{
+  position:relative;
+  justify-content: center;
+  top: 3.5vh;
+  left:50%;
+  transform:translate(-50%,-50%);
+  height: 9.2vh;
+  width: 80vw;
+  border:0.34vh solid white;
+  border-radius: 5vh;
+  margin-top: 2.7vh;
+
+  cursor:pointer;
+  color: white;
+  font-size: 2.5vh;
+  display:flex;
+  align-items:center;
+  overflow: hidden;
+  font-weight: bold;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.option:hover{
+  background: #0eafce;
+  color:white;
+  border:0.3vh solid white;
+}
+
+.option-div > .option > span{
+  text-align: center;
+  color: white;
+  font-size: 2.0vh;
+  text-align: center;
+  margin: 0 1vw;
+  padding: 10px;
+
+}
+
+.next-ques-btn{
+  height: 5vh;
+  width: 30vw;
+  background: linear-gradient(45deg, #ff0081, #8629f0);
+  position: absolute;
+  border-radius: 2vh;
+  cursor: pointer;
+  font-size: 2.5vh;
+  color: white;
+  border: 0.1vh solid #5c17aa;
+  text-align: center;
+  bottom: 7vh;
+  left: 36%;
+  justify-content: center;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.result-div{
+  overflow: hidden;
+  height: 56.5vh;
+  width:75.9vw;
+  background:linear-gradient(blue,rgb(104, 40, 104));
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  border-radius: 2vh;
+  padding:6%;
+  font-weight: 600;
+}
+h3{
+  align-items: center;
+  font-size: 150%;
+}
+
+.result-div span{
+  position:absolute;
+  top:29vh;
+  left:50%;
+  transform:translate(-50%, -50%);
+  font-size: 3.2vh;
+  color: white;
+  white-space:nowrap;
+}
+
+.result-div .score{
+  position:absolute;
+  top:33.5vh;
+  height: 3.5vh;
+  width:100%;
+  color: white;
+  font-weight: bold;
+}
+
+.score > span{
+  position:absolute;
+  top:6.0vh;
+  left:43%;
+  transform:translate(-50%, -50%);
+  font-size:2.7vh;
+
+}
+
+.back-btn{
+  position:absolute;
+  bottom:10.8vh;
+  padding: 0.9vh 2vw 0.9vh 2vw;
+  width: 25.5vw;
+  background:#0eafce;
+  white-space:nowrap;
+  color:white;
+
+  font-size: 2vh;
+  border-radius:1vh;
+  text-align:center;
+  cursor:pointer;
+  position:absolute;
+  left:50%;
+  transform:translate(-50%, -50%);
+  border: 0.1vh solid #0eafce;
+}
+img{
+  margin-top: 0%;
+  top: 10;
+  height: 200px;
+  width: 310px;
+  margin-left: 0%;
+  padding:0px;
+}
+@media screen and (max-width: 800px) {
+  .left, .main, .right {
+    width: 100%;
+  }
+}
+
+    </style>
+ <script>
+    function preventBack() {
+        window.history.forward();
+    }
+
+    setTimeout("preventBack()", 0);
+    window.onunload = function() {
+        null
+    };
+</script>
+
+</head>
+<body>
+
+<!--{% block content %}-->
+{% if question is None %}
+
+<!--<div class="container">-->
+<!--  <div class="jumbotron my-4">-->
+<div class="result-div">
+    <img src="https://images.shiksha.com/mediadata/images/articles/1579697540phpRjp2T9.jpeg" alt="coins">
+    </i>
+    <center><div style="font-size:2.5vh; color:white; margin-top:10px;"> You've completed </div></center>
+      <center><div style="font-size:5vh; color:white; margin-top:10px;">!! The Quiz !!</div></center>
+
+    <div class="score">
+      <span>The Result will be announced
+        <center>shortly</center>
+      </span>
+    </div>
+    <a href="{% url 'quiz:home' %}" >
+        <button class="back-btn" >Back</button>
+    </a>
+</div>
+
+<!--  </div>-->
+<!--</div>-->
+
+{% else %}
+
+<!--<div class="container">-->
+<!--  <div class="jumbotron my-4">-->
+<section>
+    <div class="top-bar">
+      <span class="question-number">
+        Attempt all questions
+      </span>
+    </div>
+  </section>
+
+<div class="container">
+    <div class="timer">
+
+        <div class="time-left" id="myTimer"></div>
+
+
+    </div>
+    <!--                    <h3>Zero Quiz</h3>-->
+
+    <div class="ques-text">
+        <span>{{ question.html|safe }}</span>
+    </div>
+
+    <!--    <h3 class="text-info">{{ question.html|safe }}</h3>-->
+    <form id="form__submit" action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="question_pk" value="{{ question.pk }}">
+        <div class="option-div">
+            {% for choice in question.choices.all %}
+
+            <div class="option">
+                <input class="option" type="radio" name="choice_pk" id="choice-{{ forloop.counter }}" value="{{ choice.pk }}">
+                <label for="choice-{{ forloop.counter }}">
+                    <span> {{ choice.html|safe }} </span>
+                </label>
+            </div>
+
+
+            <script>
+    var sec = 15;
+
+    var myTimer = document.getElementById('myTimer');
+    var myBtn = document.getElementById('myBtn');
+
+    window.onload = countDown;
+
+    function countDown()
+    {
+        if (sec < 10) {
+            myTimer.innerHTML = "0" + sec;
+        } else {
+            myTimer.innerHTML = sec;
+        }
+        if (sec <= 0) {
+<!--            $("#myBtn").removeAttr("disabled");-->
+<!--            $("#myBtn").removeClass().addClass("btnEnable");-->
+<!--            $("#myTimer").fadeTo(2500, 0);-->
+<!--            myBtn.innerHTML = "Click Me!";-->
+if(document.getElementById('choice-1').checked || document.getElementById('choice-2').checked || document.getElementById('choice-3').checked || document.getElementById('choice-4').checked) {
+let form = document.getElementById("form__submit");
+            form.submit();
+}
+else{
+window.location.href="{% url 'quiz:notsubmission_result' %}";
+}
+
+            return;
+        }
+        sec -= 1;
+        window.setTimeout(countDown, 1000);
+    }
+let radBtnDefault = document.getElementById("choice-1");
+radBtnDefault.checked = true
+            </script>
+            {% endfor %}
+        </div>
+
+
+        <input class="next-ques-btn" type="submit" value="Submit">
+    </form>
+    <script>
+            let optionDiv1 = document.querySelectorAll(".option")[0];
+let optionDiv2 = document.querySelectorAll(".option")[1];
+let optionDiv3 = document.querySelectorAll(".option")[2];
+let optionDiv4 = document.querySelectorAll(".option")[3];
+
+
+
+optionDiv1.addEventListener("click", function(){
+  document.querySelectorAll(".option")[0].classList.add("handle-click");
+})
+
+optionDiv2.addEventListener("click", function(){
+  document.querySelectorAll(".option")[1].classList.add("handle-click");
+})
+
+optionDiv3.addEventListener("click", function(){
+  document.querySelectorAll(".option")[2].classList.add("handle-click");
+})
+
+optionDiv4.addEventListener("click", function(){
+  document.querySelectorAll(".option")[3].classList.add("handle-click");
+})
+
+    </script>
+
+</div>
+{% endif %}
+</body>
+</html>
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--{% endblock content %}-->

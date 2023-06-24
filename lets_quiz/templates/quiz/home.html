@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Let's Quiz | Home {% endblock title %}
+{% block css %}
+<style>
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left:40%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.vertical-center1 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+margin:2%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+</style>
+{% endblock css %}
+{% block content %}
+
+        {% if not request.user.is_active %}
+
+
+<!--        <p><strong> Start Your Journey Here:</strong></p>-->
+<!--        <a href="{% url 'quiz:register' %}" class="btn btn-lg btn-info mt-1"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a>-->
+<div class="vertical-center">
+<center>
+    <a href="{% url 'quiz:login' %}" ><button type="button" class="btn btn-primary">Log In</button></a>
+</center>
+</div>
+        {% else %}
+<div class="card mb-3 vertical-center1"  style="max-width: 540px;">
+  <div class="row g-0">
+      <div class="row g-0">
+    <div class="col-md-4">
+      <img src="https://media.istockphoto.com/id/1268465415/photo/quiz-time-concept-speech-bubble-with-pencil-on-yellow-background.jpg?s=612x612&w=0&k=20&c=ZowfYpCJeyknpWhnfyWqV1_If6aJmFUiSqqqEUBhvAg=" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Play quiz and win exciting prizes</h5>
+        <p class="card-text">Win upto Rs 1000</p>
+        <p class="card-text"><small class="text-muted">Entry fees Rs 1</small></p>
+          {% for op in mymembers %}
+
+          {% if status == True or op.payment_done == True %}
+
+        <a href="{% url 'quiz:play' %}" >
+          <button id="btn" class="btn btn-lg btn-info mt-1">Play</button></a>
+          <script>
+              var d = new Date(); // for now
+btn1 = document.getElementById("btn")
+if(d.getHours()==10){
+if(d.getMinutes()<53 && d.getMinutes()>35){
+ btn1.disabled = false;
+}
+else{
+ btn1.disabled =  false;
+}
+}
+else{
+ btn1.disabled = false;
+}
+          </script>
+
+
+
+
+          {% else %}
+
+          <form action={% url 'quiz:paymentdone' %} >
+<script
+                        src="https://checkout.razorpay.com/v1/checkout.js"
+                        data-key="rzp_test_TxzRfdOWgmXKmu"
+                        data-amount="{{ payment.amount }}"
+                        data-currency="{{ payment.currency }}"
+                        data-order_id="{{ payment.id }}"
+                        data-buttontext="Continue"
+
+                        data-name="Zeroquiz"
+                        data-description="Quiz"
+                        data-image="https://example.com/your_logo.jpg"
+                        data-prefill.name="{{ payment.name }}"
+                        data-prefill.email="you@example.com"
+
+                ></script>
+
+      <input type="hidden"  custom="Hidden Element" name="hidden">
+        </form>
+          {% endif %}
+          {% empty %}
+
+          <form action={% url 'quiz:paymentdone' %} >
+<script
+                        src="https://checkout.razorpay.com/v1/checkout.js"
+                        data-key="rzp_test_TxzRfdOWgmXKmu"
+                        data-amount="{{ payment.amount }}"
+                        data-currency="{{ payment.currency }}"
+                        data-order_id="{{ payment.id }}"
+                        data-buttontext="Continue"
+
+                        data-name="Zeroquiz"
+                        data-description="quiz"
+                        data-image="https://example.com/your_logo.jpg"
+                        data-prefill.name="{{ payment.name }}"
+                        data-prefill.email="you@example.com"
+
+                ></script>
+
+      <input type="hidden"  custom="Hidden Element" name="hidden">
+        </form>
+{% endfor %}
+<!--        <a href="{% url 'quiz:leaderboard' %}" class="btn btn-lg btn-info mt-1">Leaderboard</a>-->
+
+
+      </div>
+    </div>
+  </div>
+</div>
+        {% endif %}
+
+
+<script>
+
+setTimeout("location.reload(true);", 30000);
+</script>
+{% endblock content %}
+
